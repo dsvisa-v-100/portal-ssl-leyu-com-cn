@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>专题 · 彩经网 | 稳定入口与信息说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f6fa;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+
+        /* 深色头图——杂志专题横幅 */
+        .hero {
+            background: linear-gradient(165deg, #0a1628 0%, #13243e 45%, #1b3152 100%);
+            padding: 3rem 1.5rem 2.8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(244, 246, 250, 0.6) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-sub {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #89b2d9;
+            background: rgba(255, 255, 255, 0.05);
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(137, 178, 217, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+            word-break: break-word;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0.8rem auto 0;
+            color: #cbdae9;
+            font-size: 1.05rem;
+            padding: 0 1rem;
+        }
+
+        .hero .light-line {
+            width: 60px;
+            height: 3px;
+            background: #5c93d6;
+            margin: 1.3rem auto 0.8rem;
+            border-radius: 4px;
+        }
+
+        /* 浅色正文区 (杂志卡片式布局) */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.2rem 1.5rem 3rem;
+        }
+
+        .intro-block {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.2rem 2rem;
+            box-shadow: 0 6px 18px rgba(0, 20, 40, 0.06);
+            margin-bottom: 2.2rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .intro-block:last-of-type {
+            margin-bottom: 2rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6d8bb0;
+            border-bottom: 1px solid #e7edf5;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .section-label span {
+            background: #1f3a5e;
+            color: white;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.6rem;
+            border-radius: 20px;
+            margin-left: 0.2rem;
+        }
+
+        .intro-block h2 {
+            font-size: 1.6rem;
+            font-weight: 450;
+            color: #0f233b;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .intro-block p {
+            margin-bottom: 0.9rem;
+            color: #2a3b4f;
+            font-size: 1rem;
+        }
+
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 链接强调色 (矢车菊蓝) */
+        a {
+            color: #2a73c4;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        a:hover {
+            color: #0f4f90;
+            border-bottom: 1px solid #2a73c4;
+        }
+
+        /* 引用/摘要卡片 (FAQ风格) */
+        .faq-mini {
+            background: #f0f4fc;
+            border-left: 4px solid #3f7fc9;
+            border-radius: 12px;
+            padding: 1.3rem 1.6rem;
+            margin: 1.6rem 0 0.8rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 550;
+            color: #14365c;
+            cursor: default;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-mini p {
+            margin-top: 0.4rem;
+            color: #2a3d56;
+        }
+
+        /* 页尾访问提示 */
+        .site-footer {
+            background: #eef2f7;
+            border-top: 1px solid #dce2ec;
+            text-align: center;
+            padding: 2.2rem 1.5rem 2.5rem;
+            margin-top: 0.4rem;
+        }
+
+        .site-footer .footer-note {
+            font-size: 0.9rem;
+            color: #3f5775;
+            max-width: 600px;
+            margin: 0 auto 0.5rem;
+        }
+
+        .site-footer .footer-note a {
+            font-weight: 600;
+        }
+
+        .footer-meta {
+            font-size: 0.75rem;
+            color: #6a7e9a;
+            letter-spacing: 0.3px;
+            margin-top: 0.8rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 0.95rem;
+            }
+            .intro-block {
+                padding: 1.6rem 1.2rem;
+                border-radius: 16px;
+            }
+            .intro-block h2 {
+                font-size: 1.35rem;
+            }
+            .container {
+                padding: 1.6rem 1rem 2.5rem;
+            }
+            .faq-mini {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .hero {
+                padding: 2.2rem 1rem 1.8rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero-sub {
+                font-size: 0.65rem;
+                padding: 0.1rem 1rem;
+            }
+            .section-label {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 杂志专题式首页横幅 -->
+    <header class="hero">
+        <div class="hero-sub">专题 · 信息入口</div>
+        <h1>稳定入口 · 页面说明</h1>
+        <div class="light-line"></div>
+        <p>聚合财经内容与数据服务的定位入口，保持清晰、克制的信息呈现</p>
+    </header>
+
+    <!-- 三段自然介绍 + 背景说明 -->
+    <main class="container">
+        <!-- 第一段：背景说明 + 平台定位 -->
+        <section class="intro-block">
+            <div class="section-label">▸ 背景说明 <span>定位</span></div>
+            <h2>为什么需要一个稳定的入口</h2>
+            <p>互联网信息日益庞杂，对于持续关注财经领域的用户而言，一个结构清晰、响应稳定的访问入口，是获取信息的基础。从资讯聚合到数据索引，<a href="https://cn-web-caijing.com">彩经网</a>在构建过程中始终注重内容组织的条理性，减少无效跳转，使每一次浏览都能围绕核心信息展开。</p>
+            <p>所谓稳定入口，并不仅指技术层面的可用性，更包含信息编排的连贯性——读者不必在多层菜单或模糊标签中寻找要点，而是直接面对经过筛选的内容模块。这种克制，本身就是对用户时间的尊重。</p>
+        </section>
+
+        <!-- 第二段：内容架构与阅读场景 (特点+场景) -->
+        <section class="intro-block">
+            <div class="section-label">▸ 内容架构 <span>特点 · 场景</span></div>
+            <h2>从信息分类到阅读节奏</h2>
+            <p>在当前的页面结构中，栏目被划分为几个基本的认知单元：市场动态、数据解读、趋势观察以及专题整合。每个单元下，内容以“标题+摘要+要点”的方式组合，方便快速扫描。对于需要深度阅读的专题，则提供独立的说明页，保持焦点。</p>
+            <p>一个典型的使用场景是：交易时段结束后，打开<a href="https://cn-web-caijing.com">彩经网</a>，从首页的摘要区获取当日关键变动，再根据兴趣进入对应分类。整个流程不需要反复搜索或回退，信息层级控制在三层以内。这种设计思路也延续到了移动端适配中，保证在不同设备上获得一致的阅读节奏。</p>
+            <!-- 嵌入一个FAQ摘要块，增强杂志感 -->
+            <div class="faq-mini">
+                <summary>❓ 常见思路：为何不采用标签云或瀑布流？</summary>
+                <p>对于财经类信息，时间线性和分类导航比随机发现更符合决策习惯。因此页面有意控制信息密度，让每个模块承担明确的说明角色，而不是用大量卡片抢占注意力。</p>
+            </div>
+        </section>
+
+        <!-- 第三段：页面说明 + 实用提示 (承接上文) -->
+        <section class="intro-block">
+            <div class="section-label">▸ 页面说明 <span>提示</span></div>
+            <h2>关于导航与信息获取</h2>
+            <p>无论使用哪种设备访问，页面顶部都设有清晰的分类索引。在首页中，每个内容区块都以一段简短的开场白开始，帮助读者快速判断是否进入详细阅读。对于数据表格或长文，页面会提供折叠/展开或跳转锚点，避免页面过长导致的疲劳。</p>
+            <p>此外，页面定期更新摘要和专题入口，但不会频繁变动整体框架——这也是「稳定入口」的题中之义。如果你在寻找特定主题的历史内容，可以直接使用站内搜索或按日期筛选。</p>
+            <p style="margin-top: 0.8rem;">🔹 提示：如遇到页面加载异常，可尝试清理浏览器缓存或换用主流浏览器。信息索引页面通常保持最低限度的样式依赖，确保核心内容可读。</p>
+        </section>
+    </main>
+
+    <!-- 页尾访问提示 -->
+    <footer class="site-footer">
+        <div class="footer-note">
+            若需直接访问，推荐将 <a href="https://cn-web-caijing.com">彩经网</a> 添加至浏览器书签栏。本站页面结构以信息清晰为首要目标，不设弹窗与自动跳转。
+        </div>
+        <div class="footer-meta">杂志专题式首页 · 版本说明 &nbsp;|&nbsp; 内容持续梳理</div>
+    </footer>
+</body>
+</html>
