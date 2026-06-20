@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>百家乐 · 信息索引与资料整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f4f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e2a3a;
+      line-height: 1.6;
+      padding: 2rem 1.2rem;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* header / hero 区 */
+    .hero {
+      margin-bottom: 2rem;
+      padding: 2.5rem 1.8rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.02);
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0b1826;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #3e4b5c;
+      max-width: 70ch;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      margin-top: 1rem;
+      background: #e8edf3;
+      color: #1a2b3f;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 30px;
+      letter-spacing: 0.02em;
+    }
+
+    /* 卡片网格——目录感 */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 640px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(0, 0, 0, 0.03);
+      transition: box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: #0c1d2e;
+      border-left: 3px solid #8899aa;
+      padding-left: 0.7rem;
+    }
+
+    .card p, .card li {
+      font-size: 0.92rem;
+      color: #2b3b4f;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      color: #7a8a9e;
+      font-size: 0.8rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef2f7;
+      border-radius: 30px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.75rem;
+      color: #27445e;
+      margin-right: 0.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* 提示区 + 信息区组合 */
+    .info-row {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 700px) {
+      .info-row {
+        flex-direction: row;
+      }
+      .info-row > * {
+        flex: 1;
+      }
+    }
+
+    .notice-box {
+      background: #f9fafc;
+      border-radius: 18px;
+      padding: 1.6rem 1.4rem;
+      border: 1px solid #e6eaf0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
+    }
+
+    .notice-box h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #1c3043;
+    }
+
+    .notice-box p, .notice-box li {
+      font-size: 0.9rem;
+      color: #2e4056;
+    }
+
+    .notice-box ul {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+
+    .notice-box li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .notice-box li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: #6c7f94;
+    }
+
+    /* faq 摘要 */
+    .faq-mini {
+      margin-top: 0.8rem;
+      border-top: 1px dashed #d4dce6;
+      padding-top: 0.8rem;
+    }
+
+    .faq-mini dt {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #0b1b2b;
+      margin-top: 0.8rem;
+    }
+
+    .faq-mini dd {
+      font-size: 0.85rem;
+      color: #405368;
+      margin-left: 0.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* 链接样式 */
+    a {
+      color: #1a4b74;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover {
+      border-bottom-color: #1a4b74;
+    }
+
+    .ref-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      border: 1px solid #cdd7e2;
+      border-radius: 30px;
+      padding: 0.25rem 1rem;
+      background: white;
+      transition: background 0.1s;
+    }
+
+    .ref-link:hover {
+      background: #eef3f9;
+      border-color: #a0b2c4;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6c7f94;
+      padding: 1.5rem 0 0.5rem;
+      border-top: 1px solid #e2e7ee;
+      margin-top: 1.5rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e0e5ec;
+      margin: 0.6rem 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero -->
+  <div class="hero">
+    <h1>资料整理 · 信息索引</h1>
+    <p>以知识库入口方式，汇集有关 <a href="https://cn-bac.com" style="border-bottom:1px solid #8ca0b5;">百家乐</a> 的结构化笔记、规则说明、术语对照与常见疑问摘要。本页面向资料检索与快速查阅场景，内容保持简洁、克制的专业风格。</p>
+    <span class="badge">索引版本 · 2025</span>
+  </div>
+
+  <!-- 目录感卡片网格 -->
+  <div class="grid">
+    <div class="card">
+      <h2>基础规则</h2>
+      <ul>
+        <li>每局使用 6–8 副牌，不包含鬼牌</li>
+        <li>庄、闲两家各发 2–3 张牌，依补牌规则而定</li>
+        <li>点数计算：A=1、2–9 按面值、10/J/Q/K=0</li>
+        <li>总值取个位数比较，点数高者胜</li>
+      </ul>
+      <div style="margin-top: 0.7rem;"><span class="tag">自然赢</span><span class="tag">补牌</span><span class="tag">例牌</span></div>
+    </div>
+
+    <div class="card">
+      <h2>术语对照</h2>
+      <ul>
+        <li>庄 (Banker) · 闲 (Player) · 和 (Tie)</li>
+        <li>自然九 / 自然八 (Natural)</li>
+        <li>补牌 (Third Card Rule)</li>
+        <li>庄例 / 闲例 (Stand / Draw)</li>
+        <li>龙 (Dragon) · 凤 (Phoenix) 部分版本用语</li>
+      </ul>
+      <p style="margin-top:0.5rem; font-size:0.85rem;">术语在不同规则版本中可能存在微小差异，建议核对具体资料。</p>
+    </div>
+
+    <div class="card">
+      <h2>赔率与抽水</h2>
+      <ul>
+        <li>庄赢 1:1，抽水 5% (常见)</li>
+        <li>闲赢 1:1，无抽水</li>
+        <li>和局 1:8 或 1:9 (依规则)</li>
+        <li>对子 (Pair) 1:11</li>
+      </ul>
+      <p style="margin-top:0.5rem; font-size:0.85rem;">部分娱乐场或线上平台可能调整抽水/赔率结构。</p>
+    </div>
+
+    <div class="card">
+      <h2>策略参考</h2>
+      <ul>
+        <li>了解基本概率：庄胜概率略高于闲</li>
+        <li>避免过度依赖固定路单或趋势</li>
+        <li>明确单局独立性，无“必中”系统</li>
+        <li>设定停利/停损点，控制时间与资金</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>版本差异</h2>
+      <ul>
+        <li>北美规则：8 副牌，可投降 (Surrender)</li>
+        <li>欧洲无佣金 (No Commission) 版本</li>
+        <li>速玩 (Speed Baccarat) 节奏较快</li>
+        <li>迷你百家乐：桌型较小，流程简化</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>相关数据</h2>
+      <ul>
+        <li>庄胜率 ≈ 45.86% (含抽水后赔率)</li>
+        <li>闲胜率 ≈ 44.62%</li>
+        <li>和局概率 ≈ 9.52% (依牌靴组合)</li>
+        <li>平均每局约 40–60 秒 (在线)</li>
+      </ul>
+      <p style="margin-top:0.5rem; font-size:0.85rem;">以上数值为理论统计，实际受规则与牌靴影响。</p>
+    </div>
+  </div>
+
+  <!-- 提示区 + 相关信息区 -->
+  <div class="info-row">
+    <div class="notice-box">
+      <h3>查阅提示</h3>
+      <ul>
+        <li>本索引页面仅提供结构化信息摘要，不包含实时数据或投注建议。</li>
+        <li>规则细节应以具体平台或官方资料为准，不同版本之间可能存在差异。</li>
+        <li>如需获取更全面的规则说明、历史术语或版本对照，可参考专题资料库。</li>
+        <li>建议将本页作为快速入口，配合详细文档或原文使用。</li>
+      </ul>
+    </div>
+
+    <div class="notice-box">
+      <h3>相关信息区</h3>
+      <ul>
+        <li>关于 <a href="https://cn-bac.com" style="border-bottom:1px solid #8ca0b5;">百家乐</a> 的完整规则与常见变体介绍，可在资料站中查阅。</li>
+        <li>部分关键词：百家乐规则、补牌表、赔率对照、术语索引、版本历史。</li>
+        <li>外部参考：部分博彩/博弈研究机构提供概率分析 (非本站内容)。</li>
+      </ul>
+      <div class="faq-mini">
+        <dl>
+          <dt>FAQ 摘要 · 和局怎么赔？</dt>
+          <dd>和局赔率多为 1:8 或 1:9，押注和局的胜率较低，但赔率较高。部分规则中若开出和局，庄/闲注金退回或平局。</dd>
+          <dt>FAQ 摘要 · 是否需要记牌？</dt>
+          <dd>由于使用多副牌且切牌，传统记牌效果有限，但了解牌面分布仍有参考价值。</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <!-- 额外：入口式链接卡片（目录感延续） -->
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+    <div style="background: white; border-radius: 30px; padding: 0.6rem 1.4rem; box-shadow: 0 0 0 1px #e0e6ed;">
+      <span style="font-size: 0.9rem; color: #1e2f43;">规则补牌表 → </span>
+      <a href="https://cn-bac.com" class="ref-link">百家乐</a>
+    </div>
+    <div style="background: white; border-radius: 30px; padding: 0.6rem 1.4rem; box-shadow: 0 0 0 1px #e0e6ed;">
+      <span style="font-size: 0.9rem; color: #1e2f43;">术语索引 · 对子/龙/庄闲 → </span>
+      <a href="https://cn-bac.com" class="ref-link">百家乐</a>
+    </div>
+  </div>
+
+  <!-- 脚注 -->
+  <div class="footer-note">
+    资料整理索引 · 非投注或诱导内容 · 仅供信息参考<br>
+    本站对第三方链接内容不承担责任 · 请自行甄别信息来源
+  </div>
+</div>
+</body>
+</html>
