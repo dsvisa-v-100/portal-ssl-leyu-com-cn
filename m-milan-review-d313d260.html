@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>米兰体育 · 信息聚合页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafaf9;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Helvetica, Arial, sans-serif;
+            color: #1e1e1e;
+            line-height: 1.65;
+            padding: 2.5rem 1.2rem 4rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 780px;
+            width: 100%;
+        }
+
+        /* 主视觉区域 */
+        .hero {
+            margin-bottom: 3.2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: #1b1b1b;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid #e3e3e0;
+            padding-bottom: 0.75rem;
+            display: inline-block;
+        }
+
+        .hero .accent {
+            font-weight: 400;
+            color: #5b5b5b;
+            font-size: 1.2rem;
+            margin-top: -0.2rem;
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #3f3f3f;
+            max-width: 640px;
+            margin-top: 0.5rem;
+        }
+
+        /* 用途卡片 —— 三个垂直卡片 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 3rem 0 2.8rem;
+        }
+
+        .card-item {
+            background: #ffffff;
+            border: 1px solid #eaeae8;
+            padding: 1.8rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card-item:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-item h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #242424;
+            letter-spacing: -0.01em;
+        }
+
+        .card-item p {
+            font-size: 0.95rem;
+            color: #505050;
+        }
+
+        .card-item .badge {
+            display: inline-block;
+            background: #f0f0ee;
+            color: #383838;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 适合人群区块 (简洁清单式) */
+        .audience {
+            background: #f7f7f5;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin: 2.8rem 0 2.2rem;
+        }
+
+        .audience h2 {
+            font-weight: 500;
+            font-size: 1.4rem;
+            letter-spacing: -0.01em;
+            margin-bottom: 1rem;
+            color: #1b1b1b;
+        }
+
+        .audience-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.2rem;
+        }
+
+        .audience-items span {
+            background: white;
+            padding: 0.25rem 1rem 0.25rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #2a2a2a;
+            border: 1px solid #dddcd9;
+            position: relative;
+        }
+
+        .audience-items span::before {
+            content: "·";
+            position: absolute;
+            left: 0.4rem;
+            font-weight: 700;
+            color: #757575;
+        }
+
+        /* 自然链接段落 */
+        .link-paragraph {
+            background: #ffffff;
+            padding: 1.6rem 2rem;
+            border-radius: 20px;
+            border: 1px solid #eaeae8;
+            margin: 2rem 0 2.8rem;
+            font-size: 0.98rem;
+            color: #363636;
+        }
+
+        .link-paragraph a {
+            color: #1f4b8a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b7cbdf;
+            transition: border-color 0.15s;
+        }
+
+        .link-paragraph a:hover {
+            border-bottom-color: #1f4b8a;
+        }
+
+        .link-paragraph strong {
+            font-weight: 500;
+            color: #1b1b1b;
+        }
+
+        /* FAQ 摘要 */
+        .faq-cluster {
+            margin: 2rem 0 1rem;
+        }
+
+        .faq-cluster h2 {
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #232323;
+        }
+
+        .faq-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #1e1e1e;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item .a {
+            font-size: 0.88rem;
+            color: #5a5a5a;
+            padding-left: 0.2rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e3e3df;
+            margin: 2.4rem 0 1.2rem;
+            width: 100%;
+        }
+
+        .footer-note {
+            font-size: 0.8rem;
+            color: #8c8c8a;
+            text-align: center;
+            margin-top: 1rem;
+            letter-spacing: 0.015em;
+        }
+
+        /* 响应式 */
+        @media (max-width: 520px) {
+            body {
+                padding: 1.5rem 0.8rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .card-item {
+                padding: 1.4rem 1.4rem;
+            }
+
+            .audience {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .link-paragraph {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- hero / 主视觉 -->
+    <div class="hero">
+        <h1>米兰体育<span class="accent">信息入口 · 稳定聚合</span></h1>
+        <p>围绕体育内容与资讯，提供结构化的信息索引。以简洁的卡片、清晰的人群分类，帮助使用者快速定位所需方向。</p>
+    </div>
+
+    <!-- 用途卡片 三个板块 -->
+    <div class="card-grid">
+        <div class="card-item">
+            <span class="badge">内容索引</span>
+            <h3>赛事动态 · 项目覆盖</h3>
+            <p>从足球、篮球到综合项目，通过分类卡片展示不同赛事的焦点与背景。不堆砌信息，只呈现关键入口，降低查找成本。</p>
+        </div>
+
+        <div class="card-item">
+            <span class="badge">信息结构</span>
+            <h3>分类浏览与筛选逻辑</h3>
+            <p>基于主题聚合页面，每个卡片对应一种内容模块。用户可根据自身兴趣快速触及相关板块，减少无关干扰。</p>
+        </div>
+
+        <div class="card-item">
+            <span class="badge">使用引导</span>
+            <h3>稳定访问 · 直连页面</h3>
+            <p>所有链接指向基础资源，不经过中间跳转。页面结构保持轻量，为日常浏览与信息回顾提供一致的访问体验。</p>
+        </div>
+    </div>
+
+    <!-- 适合人群 简洁标签 -->
+    <div class="audience">
+        <h2>适合人群</h2>
+        <div class="audience-items">
+            <span>日常资讯读者</span>
+            <span>体育内容浏览者</span>
+            <span>信息整理爱好者</span>
+            <span>轻量搜索用户</span>
+            <span>多项目关注者</span>
+            <span>无干扰阅读需求</span>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #515151;">人群覆盖提供参考，实际使用场景取决于个人对信息密度和呈现方式的偏好。</p>
+    </div>
+
+    <!-- 自然链接段落 (包含米兰体育) -->
+    <div class="link-paragraph">
+        <p>对于希望直接访问体育信息聚合的用户，<a href="https://m--milan.com">米兰体育</a> 提供了清晰的模块化页面。本站围绕稳定入口搭建内容框架，避开复杂导航，以最直接的方式呈现核心分类。从赛事概览到项目细节，均使用统一卡片结构，便于快速定位。此外，页面不设置干扰元素，所有文字与链接均服务于信息获取。使用者可将其视为一个干净的信息基点，无论是回顾既往内容还是了解新模块，都能获得一致的浏览感受。</p>
+    </div>
+
+    <!-- FAQ 摘要 (3个简问) -->
+    <div class="faq-cluster">
+        <h2>常见问题 · 摘要</h2>
+
+        <div class="faq-item">
+            <span class="q">页面内容更新频率如何？</span>
+            <span class="a">内容结构与卡片入口保持稳定，具体模块随信息源调整而更新，不设固定推送周期。</span>
+        </div>
+
+        <div class="faq-item">
+            <span class="q">需要注册或登录才能使用吗？</span>
+            <span class="a">不需要。<a href="https://m--milan.com">米兰体育</a> 所有页面均为公开访问，不设账户系统，也不收集个人信息。</span>
+        </div>
+
+        <div class="faq-item">
+            <span class="q">移动设备上显示是否正常？</span>
+            <span class="a">页面采用响应式布局，在手机与平板设备上均保持合理的文字大小与卡片间距，无需横向缩放。</span>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+        © 信息页 · 内容说明与导航
+    </div>
+</div>
+</body>
+</html>
